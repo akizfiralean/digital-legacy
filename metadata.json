@@ -1,0 +1,13 @@
+{
+  "name": "Digital Legacy: Arsip Memori",
+  "description": "Ruang aman keluarga bergaya Drive dengan penyimpanan tak terbatas & gratis selamanya. Abadikan foto, suara, dan resep dalam garis waktu yang indah.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "multimodal_storage",
+    "timeline_view",
+    "family_collaboration"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "entities": {
+    "Memory": {
+      "title": "Memory",
+      "description": "A family memory document including photos, voice notes, or recipes.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the memory" },
+        "description": { "type": "string", "description": "Story behind the memory" },
+        "type": { "type": "string", "enum": ["photo", "voice", "recipe"] },
+        "year": { "type": "integer", "description": "The year the memory occurred" },
+        "author": { "type": "string", "description": "Member who shared the memory" },
+        "media": { 
+          "type": "array", 
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string" },
+              "type": { "type": "string", "enum": ["image", "audio"] },
+              "name": { "type": "string" }
+            }
+          }
+        },
+        "star": { "type": "boolean", "description": "Whether the memory is starred" },
+        "userId": { "type": "string", "description": "Owner of the memory" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "type", "year", "author", "userId"]
+    }
+  },
+  "firestore": {
+    "/memories/{memoryId}": {
+      "schema": "Memory",
+      "description": "Collection of all family memories."
+    }
+  }
+}
