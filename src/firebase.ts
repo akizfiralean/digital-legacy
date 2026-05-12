@@ -17,7 +17,17 @@ export const db = getFirestore(app, (firebaseConfig as any).firestoreDatabaseId)
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 
-export const signInWithGoogle = () => signInWithPopup(auth, googleProvider);
+export const signInWithGoogle = async () => {
+  try {
+    return await signInWithPopup(auth, googleProvider);
+  } catch (error: any) {
+    console.error("Login Error:", error);
+    if (error.code === 'auth/unauthorized-domain') {
+       alert("Domain ini belum terdaftar di Firebase Console. \n\nSilakan buka Firebase Console > Authentication > Settings > Authorized Domains dan tambahkan domain GitHub Anda.");
+    }
+    throw error;
+  }
+};
 export const logout = () => signOut(auth);
 
 // Test connection

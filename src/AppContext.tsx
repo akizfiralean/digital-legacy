@@ -51,7 +51,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [language]);
 
   const t = (key: string) => {
-    return translations[language][key] || key;
+    return translations[language][key] || translations['en'][key] || translations['id'][key] || key;
   };
 
   return (
